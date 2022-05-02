@@ -6,6 +6,9 @@ const port = 3000;
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const app = express();
+const dishRouter = require('./routes/dishRouter');
+
+app.use('/dishes', dishRouter);
 
 app.use((req, res, next) => {
     console.log(req.headers);
@@ -14,7 +17,6 @@ app.use((req, res, next) => {
     res.end('<html><body><h1>This is an Express Server</h1></body></html>');
 
 });
-
 
 app.use(morgan('dev'));
 
